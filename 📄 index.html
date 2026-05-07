@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carimbo INEP</title>
+</head>
+<body>
+
+<h2>CARIMBO DIGITAL</h2>
+
+<button onclick="mostrarAba('mun')">Por Município</button>
+<button onclick="mostrarAba('inep')">Por INEP</button>
+
+<div id="abaMunicipio">
+    <h3>Buscar por Município</h3>
+    <input id="municipio" placeholder="Digite município">
+    <button onclick="buscarMunicipio()">Buscar</button>
+    <div id="resMun"></div>
+</div>
+
+<div id="abaINEP" style="display:none;">
+    <h3>Buscar por INEP</h3>
+    <input id="inep" placeholder="Digite INEP">
+    <button onclick="buscarINEP()">Buscar</button>
+    <div id="resINEP"></div>
+</div>
+
+<!-- biblioteca excel -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
