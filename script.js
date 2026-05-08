@@ -12,7 +12,7 @@ fetch("dados.xlsx")
 
     // ABA 1 = MUNICIPIO
     let aba1 = workbook.Sheets[workbook.SheetNames[0]];
-    baseMunicipio = XLSX.utils.sheet_to_json(aba1);
+    baseMUNICIPIO = XLSX.utils.sheet_to_json(aba1);
 
     // ABA 2 = INEP
     let aba2 = workbook.Sheets[workbook.SheetNames[1]];
