@@ -53,7 +53,7 @@ function carregarMunicipios() {
 // TROCAR ABAS
 // =========================
 function mostrarAba(tipo) {
-    document.getElementById("abaMunicipio").style.display = tipo === 'mun' ? 'block' : 'none';
+    document.getElementById("abaMUNICIPIO").style.display = tipo === 'mun' ? 'block' : 'none';
     document.getElementById("abaINEP").style.display = tipo === 'inep' ? 'block' : 'none';
 }
 
@@ -64,7 +64,7 @@ function buscarMunicipio() {
 
     let m = document.getElementById("municipio").value;
 
-    let r = baseMunicipio.find(x =>
+    let r = baseMUNICIPIO.find(x =>
         x["MUNICÍPIO"] === m
     );
 
@@ -103,7 +103,5 @@ function buscarINEP() {
         <b>Responsável:</b> ${r["NOME RESPONSÁVEL"]}<br>
         <b>Email:</b> ${r["EMAIL COMERCIAL"]}<br>
         <b>Telefone:</b> ${r["TELEFONE COMERCIAL"]}<br>
-        <b>Email Instituição:</b> ${r["EMAIL INSTITUICAO"] || "NÃO LOCALIZADO"}<br>
-        <b>Telefone Instituição:</b> ${r["TELEFONE INSTITUICAO"] || "NÃO LOCALIZADO"}
     `;
 }
