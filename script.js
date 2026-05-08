@@ -54,15 +54,23 @@ function mostrarAba(tipo) {
     let abaMun = document.getElementById("abaMunicipio");
     let abaInep = document.getElementById("abaINEP");
 
+    let btnMun = document.getElementById("btnMun");
+    let btnInep = document.getElementById("btnInep");
+
     if (tipo === "mun") {
         abaMun.style.display = "block";
         abaInep.style.display = "none";
+
+        btnMun.classList.add("active");
+        btnInep.classList.remove("active");
     } else {
         abaMun.style.display = "none";
         abaInep.style.display = "block";
+
+        btnMun.classList.remove("active");
+        btnInep.classList.add("active");
     }
 }
-
 // =========================
 // BUSCAR MUNICIPIO
 // =========================
