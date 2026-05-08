@@ -2,42 +2,36 @@ let baseMunicipio = [];
 let baseINEP = [];
 
 // =========================
-// ESPERAR HTML CARREGAR
+// ESPERA CARREGAR HTML
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
 
-    // carregar Excel
     fetch("dados.xlsx")
         .then(res => res.arrayBuffer())
         .then(data => {
 
             let workbook = XLSX.read(data);
 
-            // ✅ ABA 1 (municipio)
+            // ABA 1 (Municipio)
             let aba1 = workbook.Sheets[workbook.SheetNames[0]];
             baseMunicipio = XLSX.utils.sheet_to_json(aba1);
 
-            // ✅ ABA 2 (inep)
+            // ABA 2 (INEP)
             let aba2 = workbook.Sheets[workbook.SheetNames[1]];
             baseINEP = XLSX.utils.sheet_to_json(aba2);
 
             console.log("Municipios carregados:", baseMunicipio.length);
 
-            carregarMunicipios(); // 👈 agora funciona 100%
+            carregarMunicipios();
         });
 });
 
 // =========================
-// GERAR LISTA MUNICIPIOS
+// LISTA MUNICIPIOS
 // =========================
 function carregarMunicipios() {
 
     let select = document.getElementById("municipio");
-
-    if (!select) {
-        console.error("Select municipio não encontrado!");
-        return;
-    }
 
     select.innerHTML = '<option value="">Selecione o município</option>';
 
@@ -57,7 +51,24 @@ function carregarMunicipios() {
 }
 
 // =========================
-// BUSCAR MUNICIPIO
+// TROCAR ABAS ✅
+// =========================
+function mostrarAba(tipo) {
+
+    let abaMun = document.getElementById("abaMunicipio");
+    let abaInep = document.getElementById("abaINEP");
+
+    if (tipo === "mun") {
+        abaMun.style.display = "block";
+        abaInep.style.display = "none";
+    } else {
+        abaMun.style.display = "none";
+        abaInep.style.display = "block";
+    }
+}
+
+// =========================
+// BUSCAR MUNICIPIO ✅
 // =========================
 function buscarMunicipio() {
 
@@ -79,7 +90,7 @@ function buscarMunicipio() {
 }
 
 // =========================
-// BUSCAR INEP (ok)
+// BUSCAR INEP ✅
 // =========================
 function buscarINEP() {
 
@@ -96,24 +107,3 @@ function buscarINEP() {
 
     div.innerHTML = `
         <b>Nome da Escola:</b> ${r["NOME ESCOLA"]}<br>
-        <b>Município:</b> ${r["MUNICIPIO"]}<br>
-        <b>Responsável:</b> ${r["NOME RESPONSÁVEL"]}<br>
-        <b>Email:</b> ${r["EMAIL COMERCIAL"]}<br>
-        <b>Telefone:</b> ${r["TELEFONE COMERCIAL"]}<br>
-    `;
-// =========================
-// TROCAR ABAS (ESSENCIAL)
-// =========================
-function mostrarAba(tipo) {
-
-    let abaMun = document.getElementById("abaMunicipio");
-    let abaInep = document.getElementById("abaINEP");
-
-    if (tipo === 'mun') {
-        abaMun.style.display = "block";
-        abaInep.style.display = "none";
-    } else {
-        abaMun.style.display = "none";
-        abaInep.style.display = "block";
-    }
-}
