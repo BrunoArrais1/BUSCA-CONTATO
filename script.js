@@ -2,45 +2,50 @@ let baseMunicipio = [];
 let baseINEP = [];
 
 // =========================
-// CARREGAR EXCEL
+// ESPERAR HTML CARREGAR
 // =========================
-fetch("dados.xlsx")
-  .then(res => res.arrayBuffer())
-  .then(data => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    let workbook = XLSX.read(data);
+    // carregar Excel
+    fetch("dados.xlsx")
+        .then(res => res.arrayBuffer())
+        .then(data => {
 
-    // ABA 1 (municipio)
-    let aba1 = workbook.Sheets[workbook.SheetNames[0]];
-    baseMunicipio = XLSX.utils.sheet_to_json(aba1);
+            let workbook = XLSX.read(data);
 
-    // ABA 2 (inep)
-    let aba2 = workbook.Sheets[workbook.SheetNames[1]];
-    baseINEP = XLSX.utils.sheet_to_json(aba2);
+            // ✅ ABA 1 (municipio)
+            let aba1 = workbook.Sheets[workbook.SheetNames[0]];
+            baseMunicipio = XLSX.utils.sheet_to_json(aba1);
 
-    console.log("Dados carregados:", baseMunicipio.length);
+            // ✅ ABA 2 (inep)
+            let aba2 = workbook.Sheets[workbook.SheetNames[1]];
+            baseINEP = XLSX.utils.sheet_to_json(aba2);
 
-    // ✅ Só executa depois de carregar
-    if (baseMunicipio.length > 0) {
-        carregarMunicipios();
-    }
-  });
+            console.log("Municipios carregados:", baseMunicipio.length);
+
+            carregarMunicipios(); // 👈 agora funciona 100%
+        });
+});
 
 // =========================
-// GERAR LISTA
+// GERAR LISTA MUNICIPIOS
 // =========================
 function carregarMunicipios() {
 
     let select = document.getElementById("municipio");
 
+    if (!select) {
+        console.error("Select municipio não encontrado!");
+        return;
+    }
+
     select.innerHTML = '<option value="">Selecione o município</option>';
 
-    // ⚡ usar nome exato com acento
     let municipios = [...new Set(
         baseMunicipio.map(x => x["MUNICÍPIO"])
     )];
 
-    municipios = municipios.filter(m => m); // remove vazios
+    municipios = municipios.filter(m => m);
     municipios.sort();
 
     municipios.forEach(m => {
@@ -52,15 +57,13 @@ function carregarMunicipios() {
 }
 
 // =========================
-// BUSCA MUNICIPIO
+// BUSCAR MUNICIPIO
 // =========================
 function buscarMunicipio() {
 
     let m = document.getElementById("municipio").value;
 
-    let r = baseMunicipio.find(x =>
-        x["MUNICÍPIO"] === m
-    );
+    let r = baseMunicipio.find(x => x["MUNICÍPIO"] === m);
 
     let div = document.getElementById("resMun");
 
@@ -76,7 +79,7 @@ function buscarMunicipio() {
 }
 
 // =========================
-// BUSCA INEP (mantém)
+// BUSCAR INEP (ok)
 // =========================
 function buscarINEP() {
 
