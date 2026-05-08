@@ -33,7 +33,7 @@ function carregarMunicipios() {
     select.innerHTML = '<option value="">Selecione o município</option>';
 
     // pegar lista única
-    let municipios = [...new Set(baseMunicipio.map(x => x["MUNICIPIO"]))];
+    let municipios = [...new Set(baseMunicipio.map(x => x["MUNICÍPIO"]))];
 
     // ordenar
     municipios.sort();
@@ -65,7 +65,7 @@ function buscarMunicipio() {
     let m = document.getElementById("municipio").value;
 
     let r = baseMunicipio.find(x =>
-        x["MUNICIPIO"] === m
+        x["MUNICÍPIO"] === m
     );
 
     let div = document.getElementById("resMun");
@@ -76,8 +76,8 @@ function buscarMunicipio() {
     }
 
     div.innerHTML = `
-        <b>Nome:</b> ${r["NOME RESPONSÁVEL"]}<br>
-        <b>Email:</b> ${r["EMAIL COMERCIAL"]}
+        <b>Nome:</b> ${r["NOME - SECRETÁRIO"]}<br>
+        <b>Email:</b> ${r["E-MAIL - SECRETÁRIO"]}
     `;
 }
 
