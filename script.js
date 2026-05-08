@@ -33,7 +33,7 @@ function buscarMunicipio() {
     let m = document.getElementById("municipio").value.toLowerCase();
 
     let r = baseMunicipio.find(x =>
-        x["MUNICIPIO"] && x["MUNICIPIO"].toLowerCase() === m
+        x["MUNICIPIO"] && x["MUNICÍPIO"].toLowerCase() === m
     );
 
     let div = document.getElementById("resMun");
@@ -44,8 +44,8 @@ function buscarMunicipio() {
     }
 
     div.innerHTML = `
-        <b>Nome Secretário:</b> ${r["NOME SECRETARIO"] || "NÃO LOCALIZADO"}<br>
-        <b>Email:</b> ${r["EMAIL SECRETARIO"] || "NÃO LOCALIZADO"}
+        <b>Nome Secretário:</b> ${r["NOME - SECRETÁRIO"] || "NÃO LOCALIZADO"}<br>
+        <b>Email:</b> ${r["E-MAIL - SECRETÁRIO"] || "NÃO LOCALIZADO"}
     `;
 }
 
