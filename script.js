@@ -100,7 +100,20 @@ function buscarINEP() {
         <b>Responsável:</b> ${r["NOME RESPONSÁVEL"]}<br>
         <b>Email:</b> ${r["EMAIL COMERCIAL"]}<br>
         <b>Telefone:</b> ${r["TELEFONE COMERCIAL"]}<br>
-        <b>Email Instituição:</b> ${r["EMAIL INSTITUICAO"] || "NÃO LOCALIZADO"}<br>
-        <b>Telefone Instituição:</b> ${r["TELEFONE INSTITUICAO"] || "NÃO LOCALIZADO"}
     `;
+// =========================
+// TROCAR ABAS (ESSENCIAL)
+// =========================
+function mostrarAba(tipo) {
+
+    let abaMun = document.getElementById("abaMunicipio");
+    let abaInep = document.getElementById("abaINEP");
+
+    if (tipo === 'mun') {
+        abaMun.style.display = "block";
+        abaInep.style.display = "none";
+    } else {
+        abaMun.style.display = "none";
+        abaInep.style.display = "block";
+    }
 }
