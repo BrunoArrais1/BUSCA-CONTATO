@@ -10,51 +10,45 @@ fetch("dados.xlsx")
 
     let workbook = XLSX.read(data);
 
-    // ABA 1 = MUNICÍPIO
+    // ABA 1 (municipio)
     let aba1 = workbook.Sheets[workbook.SheetNames[0]];
-    baseMUNICIPIO = XLSX.utils.sheet_to_json(aba1);
+    baseMunicipio = XLSX.utils.sheet_to_json(aba1);
 
-    // ABA 2 = INEP
+    // ABA 2 (inep)
     let aba2 = workbook.Sheets[workbook.SheetNames[1]];
     baseINEP = XLSX.utils.sheet_to_json(aba2);
 
-    // 👉 gerar lista automática
-    carregarMunicipios();
+    console.log("Dados carregados:", baseMunicipio.length);
+
+    // ✅ Só executa depois de carregar
+    if (baseMunicipio.length > 0) {
+        carregarMunicipios();
+    }
   });
 
 // =========================
-// GERAR LISTA AUTOMÁTICA
+// GERAR LISTA
 // =========================
 function carregarMunicipios() {
 
     let select = document.getElementById("municipio");
 
-    // limpar
     select.innerHTML = '<option value="">Selecione o município</option>';
 
-    // pegar lista única
-    let municipios = [...new Set(baseMunicipio.map(x => x["MUNICÍPIO"]))];
+    // ⚡ usar nome exato com acento
+    let municipios = [...new Set(
+        baseMunicipio.map(x => x["MUNICÍPIO"])
+    )];
 
-    // ordenar
+    municipios = municipios.filter(m => m); // remove vazios
     municipios.sort();
 
-    // preencher
     municipios.forEach(m => {
-        if (m) {
-            let opt = document.createElement("option");
-            opt.value = m;
-            opt.textContent = m;
-            select.appendChild(opt);
-        }
+        let opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        select.appendChild(opt);
     });
-}
-
-// =========================
-// TROCAR ABAS
-// =========================
-function mostrarAba(tipo) {
-    document.getElementById("abaMUNICIPIO").style.display = tipo === 'mun' ? 'block' : 'none';
-    document.getElementById("abaINEP").style.display = tipo === 'inep' ? 'block' : 'none';
 }
 
 // =========================
@@ -64,7 +58,7 @@ function buscarMunicipio() {
 
     let m = document.getElementById("municipio").value;
 
-    let r = baseMUNICIPIO.find(x =>
+    let r = baseMunicipio.find(x =>
         x["MUNICÍPIO"] === m
     );
 
@@ -76,13 +70,13 @@ function buscarMunicipio() {
     }
 
     div.innerHTML = `
-        <b>Nome:</b> ${r["NOME - SECRETÁRIO"]}<br>
+        <b>Secretário:</b> ${r["NOME - SECRETÁRIO"]}<br>
         <b>Email:</b> ${r["E-MAIL - SECRETÁRIO"]}
     `;
 }
 
 // =========================
-// BUSCA INEP
+// BUSCA INEP (mantém)
 // =========================
 function buscarINEP() {
 
@@ -103,5 +97,7 @@ function buscarINEP() {
         <b>Responsável:</b> ${r["NOME RESPONSÁVEL"]}<br>
         <b>Email:</b> ${r["EMAIL COMERCIAL"]}<br>
         <b>Telefone:</b> ${r["TELEFONE COMERCIAL"]}<br>
+        <b>Email Instituição:</b> ${r["EMAIL INSTITUICAO"] || "NÃO LOCALIZADO"}<br>
+        <b>Telefone Instituição:</b> ${r["TELEFONE INSTITUICAO"] || "NÃO LOCALIZADO"}
     `;
 }
