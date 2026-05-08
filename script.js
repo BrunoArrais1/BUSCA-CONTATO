@@ -33,7 +33,7 @@ function buscarMunicipio() {
     let m = document.getElementById("municipio").value.toLowerCase();
 
     let r = baseMunicipio.find(x =>
-        x["MUNICIPIO"] && x["MUNICÍPIO"].toLowerCase() === m
+        x["MUNICIPIO"] && x["MUNICIPIO"].toLowerCase() === m
     );
 
     let div = document.getElementById("resMun");
@@ -73,7 +73,5 @@ function buscarINEP() {
         <b>Responsável:</b> ${r["NOME RESPONSÁVEL"]}<br>
         <b>Email Responsável:</b> ${r["EMAIL COMERCIAL"]}<br>
         <b>Telefone Responsável:</b> ${r["TELEFONE COMERCIAL"]}<br>
-        <b>Email Instituição:</b> ${r["EMAIL INSTITUICAO"] || "NÃO LOCALIZADO"}<br>
-        <b>Telefone Instituição:</b> ${r["TELEFONE INSTITUICAO"] || "NÃO LOCALIZADO"}
     `;
 }
