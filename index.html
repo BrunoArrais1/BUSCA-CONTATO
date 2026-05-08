@@ -10,13 +10,25 @@
 <button onclick="mostrarAba('mun')">Por Município</button>
 <button onclick="mostrarAba('inep')">Por INEP</button>
 
+<!-- ========================= -->
+<!-- ABA MUNICIPIO -->
+<!-- ========================= -->
 <div id="abaMunicipio">
+
     <h3>Buscar por Município</h3>
-    <input id="municipio" placeholder="Digite município">
+
+    <select id="municipio">
+        <option value="">Carregando municípios...</option>
+    </select>
+
     <button onclick="buscarMunicipio()">Buscar</button>
+
     <div id="resMun"></div>
 </div>
 
+<!-- ========================= -->
+<!-- ABA INEP -->
+<!-- ========================= -->
 <div id="abaINEP" style="display:none;">
     <h3>Buscar por INEP</h3>
     <input id="inep" placeholder="Digite INEP">
@@ -24,10 +36,10 @@
     <div id="resINEP"></div>
 </div>
 
-<!-- ✅ SCRIPT EXCEL (CORRETO) -->
+<!-- Biblioteca Excel -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
-<!-- ✅ SEU SCRIPT -->
+<!-- Seu script -->
 <script src="script.js"></script>
 
 </body>
