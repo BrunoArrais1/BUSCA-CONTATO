@@ -10,7 +10,7 @@ fetch("dados.xlsx")
 
     let workbook = XLSX.read(data);
 
-    // ABA 1 = MUNICIPIO
+    // ABA 1 = MUNICÍPIO
     let aba1 = workbook.Sheets[workbook.SheetNames[0]];
     baseMUNICIPIO = XLSX.utils.sheet_to_json(aba1);
 
