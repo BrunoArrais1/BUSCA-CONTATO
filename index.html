@@ -1,144 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Busca Contatos FUST</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="5;url=https://brunoarrais1.github.io/portal-vivo-fust/login.html">
+    
+<title>Portal Operacional FUST</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f5f5f5;
-            margin: 0;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        header {
-            background-color: #6a00a8;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #f7f7f7;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .container {
-            max-width: 700px;
-            margin: 40px auto;
-        }
+    .container {
+        text-align: center;
+        background: white;
+        padding: 50px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        max-width: 700px;
+        width: 90%;
+        border-bottom: 12px solid #6A0DAD;
+    }
 
-        .box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
-        }
+    h1 {
+        color: #6A0DAD;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
 
-        h3 {
-            color: #6a00a8;
-        }
+    p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 20px;
+    }
 
-        select, input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
+    .btn {
+        display: inline-block;
+        background: #6A0DAD;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: 0.3s;
+    }
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #6a00a8;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+    .btn:hover {
+        background: #53088a;
+    }
 
-        button:hover {
-            background-color: #7e1ac7;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .tabs button {
-            flex: 1;
-            background-color: #ddd;
-            color: black;
-        }
-
-        .tabs button.active {
-            background-color: #6a00a8;
-            color: white;
-        }
-
-        .resultado {
-            margin-top: 15px;
-            background: #f0e6ff;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .carimbo {
-            border-left: 5px solid #6a00a8;
-            padding-left: 10px;
-        }
-    </style>
-
+    .info {
+        margin-top: 20px;
+        color: #777;
+        font-size: 0.95rem;
+    }
+</style>
 </head>
 
 <body>
 
-<header>
-    BUSCA - CONTATOS EDUCAÇÃO - PROJETO FUST
-</header>
-
 <div class="container">
-    <div class="box">
+    
+    <h1>Portal Operacional FUST</h1>
 
-        <!-- BOTÕES -->
-        <div class="tabs">
-            <button id="btnMun" class="active" onclick="mostrarAba('mun')">Município</button>
-            <button id="btnInep" onclick="mostrarAba('inep')">INEP</button>
-        </div>
+    <p>
+        Este endereço foi descontinuado.
+    </p>
 
-        <!-- ABA MUNICIPIO -->
-        <div id="abaMunicipio">
+    <p>
+        Utilize o portal oficial para acessar as funcionalidades atualizadas.
+    </p>
 
-            <h3>Buscar por Município</h3>
+<a class="btn" href="https://brunoarrais1.github.io/portal-vivo-fust/login.html">
+    Clique aqui para acessar o Portal FUST
+</a>
 
-            <select id="municipio">
-                <option>Carregando municípios...</option>
-            </select>
-
-            <button onclick="buscarMunicipio()">Buscar</button>
-
-            <div id="resMun" class="resultado"></div>
-        </div>
-
-        <!-- ABA INEP -->
-        <div id="abaINEP" style="display:none;">
-
-            <h3>Buscar por INEP</h3>
-
-            <input id="inep" placeholder="Digite o código INEP">
-
-            <button onclick="buscarINEP()">Buscar</button>
-
-            <div id="resINEP" class="resultado"></div>
-        </div>
-
+    <div class="info">
+        Você será redirecionado automaticamente em alguns segundos.
     </div>
 </div>
-
-<!-- Excel -->
-<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-
-<!-- Seu JS -->
-<script src="./script.js"></script>
 
 </body>
 </html>
